@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
+<script>
+function validateForm() {
+  var name = document.forms["myForm"]["name"].value;
+  var description = document.forms["myForm"]["description"].value;
+  var price = document.forms["myForm"]["price"].value;
+  
+  if (name == "" || description == "" || price == "") {
+    alert("Todos os campos devem ser preenchidos!");
+    return false;
+  } else {
+    document.forms["myForm"].submit();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Redireciona para a página /products após o envio bem-sucedido do formulário
+  document.forms["myForm"].addEventListener("submit", function() {
+    window.location.href = "/products";
+  });
+});
+</script>
+
+
 <title>Add New Product</title>
 <style>
 body {
@@ -44,7 +68,7 @@ input[type="submit"], button {
     border-radius: 4px;
     cursor: pointer;
     border: none;
-    width: 120px; /* Adicionado width com valor fixo */
+    width: 10em; /* tamanho relativo */
     text-align: center;
 }
 
@@ -53,40 +77,56 @@ input[type="submit"]:hover, button:hover {
 }
 
 .btn-back {
- 	display: inline-block;
-	background-color: #4CAF50;
-	color: #fff;
-	padding: 10px 20px;
-	text-decoration: none;
-	border-radius: 4px;
-	cursor: pointer;
-	border: none;
-	width: 120px; /* Adicionado width com valor fixo */
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    width: 10em; /* tamanho relativo */
+    text-align: center;
 }
 
 .btn-home {
-	display: inline-block;
-	background-color: #4CAF50;
-	color: #fff;
-	padding: 10px 20px;
-	text-decoration: none;
-	border-radius: 4px;
-	cursor: pointer;
-	border: none;
-	width: 120px; /* Adicionado width com valor fixo */
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    width: 10em; /* tamanho relativo */
+    text-align: center;
 }
+
+.btn-add {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    width: 10em; /* tamanho relativo */
+    text-align: center;
+}
+
 </style>
 </head>
 <body>
 	<h1>Add New Product</h1>
-	<form th:action="@{/products}" th:object="${product}" method="post">
+	<form th:action="@{/products}" th:object="${product}" method="post" name="myForm">
 		<label>Name:</label> <input type="text" th:field="*{name}" required><br>
 		<br> <label>Description:</label> <input type="text"
 			th:field="*{description}" required><br>
 		<br> <label>Price:</label> <input type="number"
 			th:field="*{price}" required><br>
 		<br> 
-		<input type="submit" value="Add">
+		<a class="btn-add" onclick="return validateForm(); document.forms[0].submit()">Add</a>			
 		<a class="btn-back" onclick="history.back()">Voltar</a>
 		<a class="btn-home" th:href="@{/principal}">Home</a>
 	</form>
