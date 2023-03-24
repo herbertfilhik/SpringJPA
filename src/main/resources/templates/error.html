@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Error</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		h1 {
+			color: #ff5f5f;
+			font-size: 36px;
+			margin-top: 50px;
+		}
+		p {
+			color: #333;
+			font-size: 18px;
+			margin-top: 20px;
+			margin-bottom: 30px;
+		}
+		button {
+			background-color: #ff5f5f;
+			border: none;
+			color: white;
+			padding: 12px 20px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #e63c3c;
+		}
+	</style>
+</head>
+<body>
+	<h1>Error</h1>
+	<p th:text="${errorMessage}"></p>
+	<a href="/"><button>Return to login</button></a>
+</body>
+</html>
