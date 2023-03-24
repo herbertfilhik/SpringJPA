@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <title>Product List</title>
 <style>
 body {
@@ -91,25 +93,35 @@ a.delete {
 	<div class="buttons-container">
 		<a href="/products/new" class="button">Add New Product</a> <a
 			class="btn-back" onclick="history.back()">Voltar</a> <a
-			class="btn-home" th:href="@{/principal}">Home</a>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.delete').click(function(event) {
-				event.preventDefault();
-				if (confirm("Are you sure you want to delete this product?")) {
-					var row = $(this).closest('tr');
-					var id = row.find('td:first-child').text();
-					$.ajax({
-						url : '/products/' + id,
-						type : 'DELETE',
-						success : function(result) {
-							row.remove();
-							// Atualize a tabela com os dados atualizados aqui
-						}
-					});
-				}
-			});
-		});
-	</script>
+		class="btn-home" th:href="@{/principal}">Home</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.delete').click(function(event) {
+    event.preventDefault();
+    if (confirm("Are you sure you want to delete this product?")) {
+      var row = $(this).closest('tr');
+      var id = row.find('td:first-child').text();
+      var token = $("meta[name='_csrf']").attr("content");
+      var header = $("meta[name='_csrf_header']").attr("content");
+      if (token && header) {
+        $.ajax({
+          url: '/products/' + id,
+          type: 'DELETE',
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader(header, token);
+          },
+          success: function(result) {
+            console.log(result);
+            row.remove();
+            // Atualize a tabela com os dados atualizados aqui
+          }
+        });
+      } else {
+        console.error('Token CSRF ou cabeçalho não definidos.');
+      }
+    }
+  });
+});
+</script>

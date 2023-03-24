@@ -6,8 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @Service
 public class ProductService {
+	
+	private static final Logger logger = LogManager.getLogger(ProductService.class);
 
     @Autowired
     private ProductRepository productRepository;
@@ -25,6 +30,7 @@ public class ProductService {
     }
 
     public void deleteProductById(Long id) {
+    	logger.debug("Deleting product with id {}", id);
         productRepository.deleteById(id);
     }
 }
