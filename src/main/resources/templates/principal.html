@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tela Principal</title>
+<style>
+
+nav {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	position: relative;
+}
+
+nav ul li a {
+	color: #333;
+	display: inline-block;
+	margin: 0 10px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav ul li:hover a {
+	color: #000;
+}
+
+nav ul li ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+nav ul li:hover > ul {
+	display: block;
+}
+
+nav ul li ul li {
+	display: block;
+}
+
+section {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	padding: 20px;
+	margin: 20px;
+}
+
+section h2 {
+	color: #666;
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+
+section p {
+	color: #333;
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+
+header {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+	font-size: 28px;
+}
+
+footer {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+}
+</style>
+</head>
+<body>
+	<header> Tela Principal </header>
+	<nav>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Sobre</a></li>
+			<li><a href="#">Contato</a></li>
+			<li><a href="#">Menu</a>
+				<ul>
+					<li><a href="/products/new">Cadastrar</a></li>
+					<li><a href="/products">Consultar</a></li>
+					<li><a href="#">Submenu 3</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<section>
+		<h2>Bem-vindo à Tela Principal</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+			malesuada nunc nec neque ultrices, in tincidunt nulla vehicula. Duis
+			lobortis nulla quis mauris lobortis, vel blandit orci mollis. Sed
+			euismod in nisi in faucibus. Donec molestie hendrerit diam, non
+			elementum ipsum ultricies ac. Integer luctus eros massa, vel varius
+			nisi hendrerit quis. Sed eget massa eu odio feugiat aliquam.</p>
+	</section>
+
+	<footer> &copy; 2023 Tela Principal </footer>
+</body>
+</html>

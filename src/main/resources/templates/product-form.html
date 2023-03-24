@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add New Product</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+}
+
+h1 {
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+form {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+label {
+	display: inline-block;
+	width: 100px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+input[type="text"], input[type="number"] {
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	width: 100%;
+	max-width: 400px;
+	margin-bottom: 20px;
+}
+
+input[type="submit"], button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    width: 120px; /* Adicionado width com valor fixo */
+    text-align: center;
+}
+
+input[type="submit"]:hover, button:hover {
+	background-color: #3e8e41;
+}
+
+.btn-back {
+ 	display: inline-block;
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 4px;
+	cursor: pointer;
+	border: none;
+	width: 120px; /* Adicionado width com valor fixo */
+}
+
+.btn-home {
+	display: inline-block;
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 4px;
+	cursor: pointer;
+	border: none;
+	width: 120px; /* Adicionado width com valor fixo */
+}
+</style>
+</head>
+<body>
+	<h1>Add New Product</h1>
+	<form th:action="@{/products}" th:object="${product}" method="post">
+		<label>Name:</label> <input type="text" th:field="*{name}" required><br>
+		<br> <label>Description:</label> <input type="text"
+			th:field="*{description}" required><br>
+		<br> <label>Price:</label> <input type="number"
+			th:field="*{price}" required><br>
+		<br> 
+		<input type="submit" value="Add">
+		<a class="btn-back" onclick="history.back()">Voltar</a>
+		<a class="btn-home" th:href="@{/}">Home</a>
+	</form>
+</body>
+</html>
